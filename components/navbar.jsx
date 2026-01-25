@@ -1,98 +1,20 @@
-import React from "react";
-import {
-  Box,
-  Flex,
-  IconButton,
-  useColorMode,
-  useColorModeValue,
-  useDisclosure,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerHeader,
-  DrawerBody,
-  Button,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import { HamburgerIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
-import { CiDeliveryTruck} from "react-icons/ci";
+import { Flex, Heading, Button, HStack } from "@chakra-ui/react";
 
-const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
-
-  const bg = useColorModeValue("white", "black");
-  const color = useColorModeValue("gray.800", "white");
-
+export default function Navbar() {
   return (
-    <Box bg={bg} px={4} boxShadow="sm" position="sticky" top="0" zIndex="1000">
-      <Flex h={16} alignItems="center" justifyContent="space-between">
-        <Flex alignItems="center">
-          <CiDeliveryTruck size="50" />
-          <Text size="lg" ml={2} fontWeight="bold" color={color}>
-            BusBooking
-          </Text>
-        </Flex>
-
-        <Flex display={{ base: "none", md: "flex" }} gap={6}>
-          <Button variant="ghost" color={color}>
-            Home
-          </Button>
-          <Button variant="ghost" color={color}>
-            Routes
-          </Button>
-          <Button variant="ghost" color={color}>
-            Bookings
-          </Button>
-          <Button variant="ghost" color={color}>
-            Contact
-          </Button>
-        </Flex>
-
-        <Flex alignItems="center" gap={2}>
-          <IconButton
-            aria-label="Toggle Theme"
-            icon={colorMode === "light" ? <MoonIcon size="lg" /> : <SunIcon size="lg" />}
-            onClick={toggleColorMode}
-            variant="ghost"
-          />
-          <IconButton
-            aria-label="Open Menu"
-            icon={<HamburgerIcon size="lg" color="brown" />}
-            display={{ base: "flex", md: "none" }}
-            onClick={onOpen}
-            variant="ghost"
-          />
-        </Flex>
-      </Flex>
-
-      <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent bg={bg}>
-          <DrawerCloseButton />
-          <DrawerHeader>Menu</DrawerHeader>
-          <DrawerBody>
-            <Stack spacing={4}>
-              <Button variant="ghost" onClick={onClose}>
-                Home
-              </Button>
-              <Button variant="ghost" onClick={onClose}>
-                Routes
-              </Button>
-              <Button variant="ghost" onClick={onClose}>
-                Bookings
-              </Button>
-              <Button variant="ghost" onClick={onClose}>
-                Contact
-              </Button>
-            </Stack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
-    </Box>
+    <Flex
+      px={8}
+      py={4}
+      justify="space-between"
+      align="center"
+      bg="#805AD5"
+      color="white"
+    >
+      <Heading size="md">PurpleCrust Bakery</Heading>
+      <HStack spacing={6}>
+        <Button variant="ghost" color="white">Menu</Button>
+        <Button variant="ghost" color="white">Contact</Button>
+      </HStack>
+    </Flex>
   );
-};
-
-export default Navbar;
+}
