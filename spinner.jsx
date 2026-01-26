@@ -44,7 +44,7 @@ export default function SpinnerEffect() {
               thickness="2px"
               speed="0.65s"
               emptyColor="gray.200"
-              color="purple.500"
+              color="purple"
               size="xl"
               mb={4}
             />
